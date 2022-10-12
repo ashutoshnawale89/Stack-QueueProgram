@@ -1,8 +1,5 @@
 package com.Program;
 
-import com.stack.program.StackProgram;
-import com.stack.program.StackProgram.Node;
-
 public class StackProgram {
 	public Node head;
 	// FOR NODE CLASS
