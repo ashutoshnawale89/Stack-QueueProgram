@@ -1,37 +1,67 @@
 package com.Program;
 
+import com.stack.program.StackProgram;
+import com.stack.program.StackProgram.Node;
+
 public class StackProgram {
+	public Node head;
 	// FOR NODE CLASS
-	class Node  {
+   class Node  {
 		int data;
 		Node next;
+		// Constructor 
 		Node (int data){
 			this.data=data;
 			this.next=null;
 		}
 	}
-	// ADD - POSITION
-	static Node head;
-	public void Push(int data) {
-		Node newNode=new Node(data);
-		if (head == null) {
-			head=newNode; 
-			System.out.print(head.data+"->");
+   
+   public boolean isEmpty() {
+		return head == null;
+	}  
+   
+   // Push Method
+		public void push(int data) {
+			Node newNode=new Node(data);
+			if (head == null) {
+				head=newNode; 
+			}
+			else {
+				newNode.next = head;
+				head = newNode;
+			}
 		}
-		else {
-			newNode.next = head;
-			head = newNode;
-			System.out.print(head.data+"->");
-
-		}  
-	}
-
+			// REMOVE - POSITION
+			public int Pop() {
+				if (head == null) { 
+					return -1;
+				}
+				else {
+					int top = head.data;
+					head=head.next;
+					return top;
+				}
+			}
+			// PEEK - POSITION
+			public int peek() {
+				if (head == null) { 
+					return -1;
+				}
+				else {
+					return head.data;
+				}
+			}
+		
+	
 	public static void main(String[] args) {
-		StackProgram obje=new StackProgram();
-		obje.Push(70);
-		obje.Push(30);
-		obje.Push(56);
-		System.out.print("null");
+		StackProgram obj=new StackProgram();
+		obj.push(70);
+		obj.push(30);
+		obj.push(56);
+		while(!obj.isEmpty()) {
+			System.out.println(obj.peek());
+			obj.Pop();
+		}
 	}
 }
 
